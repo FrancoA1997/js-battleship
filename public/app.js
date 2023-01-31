@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const turnDisplay = document.querySelector('#whose-go')
   const infoDisplay = document.querySelector('#info')
   let isHorizontal = true
+  let isGameOver = false
+  let currentPlayer = 'user'
   const userSquares = []
   const aiSquares = []
   const width = 10;
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isTaken = current.some(index => aiSquares[randomStart + index].classList.contains('taken'))
     const isAtRightEdge = current.some(index => (randomStart + index) % width === width - 1)
     const isAtLeftEdge = current.some(index => (randomStart + index) % width === 0)
-    if (!isTaken && !isAtRightEdge && !isAtLeftEdge) current.forEach(index => aiSquares[randomStart + index].classList.add('taken', ship.name))
+    if (!isTaken && !isAtRightEdge && !isAtLeftEdge) current.forEach(index => aiSquares[randomStart + index].classList.add('taken', ship.name , 'ai-ship'))
 
     else generate(ship)
 
@@ -73,14 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function rotate() {
     if (isHorizontal) {
-      smShip.classList.toggle('smShip-container-vertical')
-      mdShip.classList.toggle('mdShip-container-vertical')
-      lgShip.classList.toggle('lgShip-container-vertical')
+      displayGrid.classList.toggle('grid-display-vertical')
+      smShip.classList.toggle('smShip-container-vertical', 'grid-display-vertical')
+      mdShip.classList.toggle('mdShip-container-vertical', 'grid-display-vertical')
+      lgShip.classList.toggle('lgShip-container-vertical', 'grid-display-vertical')
       isHorizontal = false
       console.log(isHorizontal)
       return
     }
     if (!isHorizontal) {
+      displayGrid.classList.remove('grid-display-vertical')
       smShip.classList.toggle('smShip-container-vertical')
       mdShip.classList.toggle('mdShip-container-vertical')
       lgShip.classList.toggle('lgShip-container-vertical')
@@ -151,14 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isHorizontal && !newNotAllowedHorizontal.includes(shipLastId)) {
       for (let i=0; i < draggedShipLength; i++) {
         
-        userSquares[parseInt(this.dataset.id) - selectedShipIndex + i].classList.add('taken', shipClass)
+        userSquares[parseInt(this.dataset.id) - selectedShipIndex + i].classList.add('taken', shipClass, "user-ship")
       }
     //As long as the index of the ship you are dragging is not in the newNotAllowedVertical array! This means that sometimes if you drag the ship by its
     //index-1 , index-2 and so on, the ship will rebound back to the displayGrid.
     } else if (!isHorizontal && !newNotAllowedVertical.includes(shipLastId)) {
       console.log(draggedShipLength)
       for (let i=0; i < draggedShipLength; i++) {
-        userSquares[parseInt(this.dataset.id) - selectedShipIndex + width*i].classList.add('taken', shipClass)
+        userSquares[parseInt(this.dataset.id) - selectedShipIndex + width*i].classList.add('taken', shipClass, "user-ship")
       }
     } else return
 
@@ -173,8 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function playGame() {
     if (isGameOver) return
     if (currentPlayer === 'user') {
+      infoDisplay.classList.toggle('bigger-text')
+      startButton.classList.toggle('hidden-btn')
+      rotateButton.classList.toggle('hidden-btn')
       turnDisplay.innerHTML = 'Your Go'
-      computerSquares.forEach(square => square.addEventListener('click', function (e) {
+      aiSquares.forEach(square => square.addEventListener('click', function (e) {
         revealSquare(square)
       }))
     }
@@ -185,6 +192,83 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   startButton.addEventListener('click', playGame)
 
-  
+  let smallShip = 0
+  let mediumShip = 0
+  let largeShip = 0
+ 
+  function revealSquare(square) {
+    if (!square.classList.contains('boom')) {
+      if (square.classList.contains('smShip')) smallShip++
+      if (square.classList.contains('mdShip')) mediumShip++
+      if (square.classList.contains('lgShip')) largeShip++
+    }
+    if (square.classList.contains('taken')) {
+      square.classList.add('boom')
+    } else {
+      square.classList.add('miss')
+    }
+    checkForWins()
+    currentPlayer = 'computer'
+    playGame()
+  }
+
+
+  let cpuSmallShip = 0
+  let cpuMediumShip = 0
+  let cpuLargeShip = 0
+
+  function computerGo() {
+    let random = Math.floor(Math.random() * userSquares.length)
+    if (!userSquares[random].classList.contains('boom')) {
+      userSquares[random].classList.add('boom')
+      if (userSquares[random].classList.contains('smShip')) cpuSmallShip++
+      if (userSquares[random].classList.contains('mdShip')) cpuMediumShip++
+      if (userSquares[random].classList.contains('lgShip')) cpuLargeShip++
+      checkForWins()
+    } else computerGo()
+    currentPlayer = 'user'
+    turnDisplay.innerHTML = 'Your Go'
+  }
+  function checkForWins() {
+    if (smallShip === 2) {
+      infoDisplay.innerHTML = 'You sunk the computers small ship'
+      smallShip = 10
+    }
+    if (mediumShip === 3) {
+      infoDisplay.innerHTML = 'You sunk the computers medium ship '
+      mediumShip = 10
+    }
+    if (largeShip === 4) {
+      infoDisplay.innerHTML = 'You sunk the computers large ship '
+      largeShip = 10
+    }
+ 
+    if (cpuSmallShip === 2) {
+      infoDisplay.innerHTML = 'Your small ship got detroyed'
+      cpuSmallShip = 10
+    }
+    if (cpuMediumShip === 3) {
+      infoDisplay.innerHTML = 'Your medium ship got detroyed'
+      cpuMediumShip = 10
+    }
+    if (cpuLargeShip === 4) {
+      infoDisplay.innerHTML = 'Your large ship got detroyed'
+      cpuLargeShip = 10
+    }
+    
+    if ((smallShip + mediumShip + largeShip ) === 30) {
+      infoDisplay.innerHTML = "YOU WIN"
+      gameOver()
+    }
+    if ((cpuSmallShip + cpuMediumShip + cpuLargeShip) === 30) {
+      infoDisplay.innerHTML = "COMPUTER WINS"
+      gameOver()
+    }
+  }
+
+  function gameOver() {
+    isGameOver = true
+    startButton.removeEventListener('click', playGame)
+  }
 
 })

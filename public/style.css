@@ -1,5 +1,17 @@
+body{
+  background: linear-gradient(90deg, rgba(103,43,215,1) 0%, rgba(136,0,255,0.6923144257703081) 100%);
+}
+
+.grid-display-vertical{
+  display: flex;
+  flex-direction: row;
+}
 .container {
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 200px;
+
   }
 
   .user-grid {
@@ -7,16 +19,16 @@
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: blue;
     margin: 20px;
+    border-radius: 5px;
   }
   .ai-grid {
     width: 400px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: lightgreen;
     margin: 20px;
+    border-radius: 5px;
   }
 
   .grid div {
@@ -25,15 +37,84 @@
    border-style: solid ;
    border-width: 0.001px;
    margin: 2px;
+   border-radius: 3px;
+   background: rgba(255, 255, 255, 0.479);
+   border-radius: 3px;
+   box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+   backdrop-filter: blur(0px);
+   -webkit-backdrop-filter: blur(0px);
+   border: 1px solid rgba(221, 220, 220, 0.829);
+  }
+  .text-center{
+    text-align: center; 
+    
+  }
+  .text-white{
+    color: rgba(0, 0, 0, 0.795);
+  }
+  .bigger-text{
+    font-size: smaller;
+  }
+
+  .hidden-btn{
+    display: none;
+  }
+    .btn-rotate{
+    cursor: pointer;
+    font-weight: 800;
+    text-transform: uppercase;
+    width: 120px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
+    margin-top: 20px;
+  }
+  .btn-start{
+    cursor: pointer;
+    font-weight: 800;
+    text-transform: uppercase;
+    width: 120px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
+    margin-top: 20px;
+  }
+  .hidden-info{
+    width: 300px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
   }
 
   .smShip-container {
     width: 80px;
     height: 40px;
-    background-color: orange;
+    background-color: rgba(255, 166, 0, 0.521);
     margin: 10px;
     display: flex;
     border-radius: 10px;
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
   }
   .smShip-container-vertical {
     width: 40px;
@@ -43,6 +124,10 @@
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
   }
   
   .mdShip-container {
@@ -52,6 +137,10 @@
     margin: 10px;
     display: flex;
     border-radius: 10px;
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
   }
   
   .mdShip-container-vertical {
@@ -62,6 +151,10 @@
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
   }
   
   .lgShip-container {
@@ -71,6 +164,10 @@
     margin: 10px;
     display: flex;
     border-radius: 10px;
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
   }
   
   .lgShip-container-vertical {
@@ -81,6 +178,10 @@
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
   }
   
   
@@ -88,12 +189,13 @@
     width: 40px;
     height: 40px;
     border-radius: 5px;
+    
   }
   
   .smShip {
     background-color: orange;
-   border-radius: 5px;
   }
+ 
   
   .mdShip {
     background-color: aqua;
@@ -104,11 +206,19 @@
     background-color: purple;
     border-radius: 5px;
   }
+  .user-ship {
+    background-color: purple!important;
+    border-radius: 5px;
+  }
+  .ai-ship {
+    background-color: lightgreen;
+   border-radius: 5px;
+  }
   
   .boom {
-    background-color: red;
+    background-color: red!important;
   }
   
   .miss {
-     background-color: black;
+     background-color: rgba(0, 0, 0, 0.466)!important;
   }
