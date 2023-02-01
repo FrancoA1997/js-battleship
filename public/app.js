@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lgShip = document.querySelector('.lgShip-container')
   const displayGrid = document.querySelector('.grid-display')
   const startButton = document.querySelector('#start')
+  const shipContainer = document.querySelector('#ships-container')
   const rotateButton = document.querySelector('#rotate')
   const turnDisplay = document.querySelector('#whose-go')
   const infoDisplay = document.querySelector('#info')
@@ -181,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     infoDisplay.innerHTML = 'Place your ships before starting the game'}
     if (currentPlayer === 'user' && displayGrid.childElementCount === 0) {
       infoDisplay.innerHTML = ''
+      shipContainer.classList.toggle('hidden-btn')
       turnDisplay.classList.toggle('text-xl')
       startButton.classList.toggle('hidden-btn')
       rotateButton.classList.toggle('hidden-btn')
