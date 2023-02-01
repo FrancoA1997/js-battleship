@@ -165,19 +165,23 @@ document.addEventListener('DOMContentLoaded', () => {
         userSquares[parseInt(this.dataset.id) - selectedShipIndex + width*i].classList.add('taken', shipClass, "user-ship")
       }
     } else return
-
     displayGrid.removeChild(draggedShip)
   }
 
   function dragEnd() {
     console.log('dragend')
   }
-
+  
   //Game Logic
+ 
+
   function playGame() {
     if (isGameOver) return
-    if (currentPlayer === 'user') {
-      turnDisplay.classList.toggle('bigger-text')
+    if(displayGrid.childElementCount === 3){
+    infoDisplay.innerHTML = 'Place your ships before starting the game'}
+    if (currentPlayer === 'user' && displayGrid.childElementCount === 0) {
+      infoDisplay.innerHTML = ''
+      turnDisplay.classList.toggle('text-xl')
       startButton.classList.toggle('hidden-btn')
       rotateButton.classList.toggle('hidden-btn')
       turnDisplay.innerHTML = 'Your Turn'

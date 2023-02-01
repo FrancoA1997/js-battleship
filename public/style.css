@@ -1,19 +1,56 @@
 body{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background: linear-gradient(90deg, rgba(103,43,215,1) 0%, rgba(136,0,255,0.6923144257703081) 100%);
 }
 
 .grid-display-vertical{
   display: flex;
   flex-direction: row;
+  
+}
+.grid-title{
+  font-size: 30px;
+  color: white;
+  margin: 0px;
+  font-weight: 800;
+  box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+   backdrop-filter: blur(0px);
+   -webkit-backdrop-filter: blur(0px);
+   border: 1px solid rgba(221, 220, 220, 0.829);
+   background: rgba(255, 255, 255, 0.267);
+   border-radius: 15px;
+   padding: 5px;
 }
 .container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     margin-top: 200px;
 
   }
+  .container-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 150px;
+    position: relative;
 
+  }
+  .grid-display{
+    box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(221, 220, 220, 0.829);
+    background: rgba(255, 255, 255, 0.267);
+    border-radius: 15px;
+    padding: 5px;
+  }
   .user-grid {
     width: 400px;
     height: 400px;
@@ -47,16 +84,19 @@ body{
   }
   .text-center{
     text-align: center; 
-    
+    text-transform: uppercase;
+  }
+  .text-xl{
+    font-size: 45px;
   }
   .text-white{
     color: rgba(0, 0, 0, 0.795);
   }
-  .bigger-text{
-    font-size: 40px;
+  .sm-text{
+    font-size: 25px;
   }
   .info-text{
-    font-size: 30px;
+    font-size: 15px;
     color: lightgreen;
   }
 
@@ -78,7 +118,8 @@ body{
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     border: 1px solid rgba(221, 220, 220, 0.829);
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 150px;
   }
   .btn-start{
     cursor: pointer;
@@ -89,13 +130,14 @@ body{
     padding-right: 2px;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-top: 150px;
     background: rgba(255, 255, 255, 0.479);
     border-radius: 10px;
     box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     border: 1px solid rgba(221, 220, 220, 0.829);
-    margin-top: 20px;
+    
   }
   .hidden-info{
     width: 300px;
@@ -105,6 +147,7 @@ body{
     justify-content: center;
     align-items: center;
     color: white;
+    margin: 0px;
     
   }
 
@@ -112,7 +155,7 @@ body{
     width: 80px;
     height: 40px;
     background-color: rgba(255, 166, 0, 0.521);
-    margin: 10px;
+    margin: 5px;
     display: flex;
     border-radius: 10px;
     box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
@@ -124,7 +167,7 @@ body{
     width: 40px;
     height: 80px;
     background-color: orange;
-    margin: 10px;
+    margin: 5px;
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
@@ -138,7 +181,7 @@ body{
     width: 120px;
     height: 40px;
     background-color: greenyellow;
-    margin: 10px;
+    margin: 5px;
     display: flex;
     border-radius: 10px;
     box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
@@ -151,7 +194,7 @@ body{
     width: 40px;
     height: 120px;
     background-color: greenyellow;
-    margin: 10px;
+    margin: 5px;
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
@@ -162,10 +205,10 @@ body{
   }
   
   .lgShip-container {
-    width: 120px;
+    width: 150px;
     height: 40px;
     background-color: red;
-    margin: 10px;
+    margin: 5px;
     display: flex;
     border-radius: 10px;
     box-shadow: 1.5px 2px  rgba(0, 0, 0, 0.425);
@@ -176,9 +219,9 @@ body{
   
   .lgShip-container-vertical {
     width: 40px;
-    height: 120px;
+    height: 150px;
     background-color: red;
-    margin: 10px;
+    margin: 5px;
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;

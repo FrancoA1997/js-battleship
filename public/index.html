@@ -11,13 +11,17 @@
 <body>
 
     <div class="container">
+        <p class="grid-title">Your grid</p>
         <div class="grid user-grid"></div>
+    </div>
+    <div class="container-info">
         <div class="hidden-info ">
-            <h3 id="whose-go" class="text-center">Drag your ships into position before starting the game!</h3>
+            <h3 id="whose-go" class="text-center bigger-text">Drag your ships into position before starting the game!</h3>
             <button id="start" class="btn-start text-center text-white">Start Game</button>
             <button id="rotate" class="btn-rotate text-center text-white">Rotate Ships</button>
-           
-            <h3 id="info" class="info-text text-center"></h3>
+            <h3 id="info" class="info-text text-center sm-text"></h3>
+            <div>
+                <p class="text-center ">Your Ships</p>
             <div class="grid-display">
                 <div class="ship smShip-container" draggable="true">
                     <div id="smShip-0"></div>
@@ -35,9 +39,15 @@
                     <div id="lgShip-3"></div>
                 </div>
               </div>
+            </div>
           </div>
+        </div>
+       <div class="container">
+       <p class="grid-title">Computer's grid</p>
         <div class="grid ai-grid"></div>
+
     </div>
+    
     
 
    
