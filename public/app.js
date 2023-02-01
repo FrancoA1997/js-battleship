@@ -177,16 +177,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function playGame() {
     if (isGameOver) return
     if (currentPlayer === 'user') {
-      infoDisplay.classList.toggle('bigger-text')
+      turnDisplay.classList.toggle('bigger-text')
       startButton.classList.toggle('hidden-btn')
       rotateButton.classList.toggle('hidden-btn')
-      turnDisplay.innerHTML = 'Your Go'
+      turnDisplay.innerHTML = 'Your Turn'
       aiSquares.forEach(square => square.addEventListener('click', function (e) {
         revealSquare(square)
       }))
     }
     if (currentPlayer === 'computer') {
-      turnDisplay.innerHTML = 'Computers Go'
+      turnDisplay.innerHTML = 'Computers Turn'
       setTimeout(computerGo, 1000)
     }
   }
@@ -227,32 +227,32 @@ document.addEventListener('DOMContentLoaded', () => {
       checkForWins()
     } else computerGo()
     currentPlayer = 'user'
-    turnDisplay.innerHTML = 'Your Go'
+    turnDisplay.innerHTML = 'Your Turn'
   }
   function checkForWins() {
     if (smallShip === 2) {
-      infoDisplay.innerHTML = 'You sunk the computers small ship'
+      infoDisplay.innerHTML = '¡You sunk the computers small ship!'
       smallShip = 10
     }
     if (mediumShip === 3) {
-      infoDisplay.innerHTML = 'You sunk the computers medium ship '
+      infoDisplay.innerHTML = '¡You sunk the computers medium ship!'
       mediumShip = 10
     }
     if (largeShip === 4) {
-      infoDisplay.innerHTML = 'You sunk the computers large ship '
+      infoDisplay.innerHTML = '¡You sunk the computers large ship!'
       largeShip = 10
     }
  
     if (cpuSmallShip === 2) {
-      infoDisplay.innerHTML = 'Your small ship got detroyed'
+      infoDisplay.innerHTML = '¡Your small ship got detroyed!'
       cpuSmallShip = 10
     }
     if (cpuMediumShip === 3) {
-      infoDisplay.innerHTML = 'Your medium ship got detroyed'
+      infoDisplay.innerHTML = '¡Your medium ship got detroyed!'
       cpuMediumShip = 10
     }
     if (cpuLargeShip === 4) {
-      infoDisplay.innerHTML = 'Your large ship got detroyed'
+      infoDisplay.innerHTML = '¡Your large ship got detroyed!'
       cpuLargeShip = 10
     }
     
